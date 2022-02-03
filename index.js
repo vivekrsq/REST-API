@@ -9,9 +9,8 @@ app.post('/create', (req, res)=>{
     const user = new Student(req.body)
     user.save().then(()=>{
         res.send(user);
-    }).catch((e)=>{
-        res.send(e);
-    });
+    }).catch(e => res.send(e));
+    
     
 });
 
