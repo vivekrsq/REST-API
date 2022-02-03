@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/newStudents?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false").then(()=>{
+mongoose.connect("mongodb+srv://new:new@newcluster.wie1g.mongodb.net/studentRecords?retryWrites=true&w=majority").then(()=>{
     
     console.log("connection is successful")
 }).catch((e)=>{
