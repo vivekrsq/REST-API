@@ -39,6 +39,19 @@ app.get('/students/:name', async (req, res)=>{
     }  
 });
 
+app.delete('/students/:id', async(req, res)=>{
+    try {
+        const deleteStudent = await Student.findByIdAndDelete(req.params.id);
+        if(!req.params.id){
+            res.status(400).send()
+
+        }
+        res.send(deleteStudent);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
   })
