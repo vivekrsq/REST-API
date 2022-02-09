@@ -2,14 +2,17 @@ const express = require('express');
 const Student = require('../models/student');
 const router = new express.Router();
 
-router.post('/students', (req, res)=>{
-    console.log(req.body)
-    const user = new Student(req.body)
-    user.save().then(()=>{
-        res.send(user);
-    }).catch(e => res.send(e));
-       
-});
+router.post('/students', async (req, res)=>{
+    try {
+        console.log(req.body)
+        const user = new Student(req.body)
+        const Saved = await user.save();
+        res.status(201).send(Saved);
+                
+    }catch (e) {
+        res.status(400).send(e);
+    }
+})
 router.get('/students', async (req, res)=>{
     try {
         console.log(req.body)
